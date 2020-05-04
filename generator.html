@@ -1,0 +1,220 @@
+
+    
+    <style>
+
+.wrapper {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: 10% 45% 45% ;
+    grid-template-areas:
+    "header header header  "
+    "sidebar content content ";
+    background-color:white;   
+}
+
+        
+  .sidebar {
+    grid-area: sidebar;
+    height:auto;
+    display: block;
+    background-color: white;
+
+    
+  }
+  
+  .content {
+    grid-area: content;
+    position: relative;
+    background-color: white;
+    height:auto;
+    width: auto;
+    
+  }
+  
+  .header {
+    grid-area: header;
+    text-align: left;
+    height:auto;
+    width:auto;
+  }
+  
+  h1{
+      font-size: 100px;
+      font-weight: bolder;
+      margin:70px;
+      position: relative;
+      color:white;
+    }
+    
+    body {
+      background-color: white;
+    }
+    
+    #tableContainer {
+      display: table;
+      padding: 1px;
+      margin-right: auto;
+      margin-left: auto;
+    }
+    
+    td {
+      border: 1px solid;
+      width: 50px;
+      height: 50px;
+      padding: .5px;
+      background-color:white;
+      border-style: double black;
+      border-color: black;  
+      display: table-cell;
+      align-items: center;
+      cursor: pointer;
+    }
+    
+    td:hover {
+      display: block;
+      width: 100%;
+      background-color: grey;
+    }
+    
+
+
+    </style>
+    
+
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>  
+    <link rel="stylesheet" href="a3.css">
+    <script src="a3.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    
+    
+    
+    <script>
+      function generateGrid(rows, cols) {
+        var grid = "<table>";
+        for ( var row = 1; row <= rows; row++) {
+          grid += "<tr>";
+          for ( var col = 1; col <= cols; col++) {
+            var cell = "<td> </td>";
+            grid += cell;
+          }
+          grid += "</tr>";
+        }
+        $("#tableContainer").empty();
+        $("#tableContainer").append(grid);
+        
+        var color = "Grey"
+
+        $( "#btnWorker" ).click(function() {
+            color = "yellow"
+         });
+
+        $( "#btnDesk" ).click(function() {
+            color = "brown"
+          });
+
+        $( "#btnMachine" ).click(function() {
+            color ="blue"
+          });
+        $( "#btnEntry" ).click(function() {
+            color = "orange"
+          });
+        $( "#btnWall" ).click(function() {
+            color = "black"
+          });
+
+        $( "#btnGrass" ).click(function() {
+            color = "green"
+          });
+
+        $( "#btnWall" ).click(function() {
+            color ="black"
+          });
+
+        $( "#btnDelete" ).click(function() {
+            color ="white"
+          });
+  
+        var isMouseClicked = false;
+        $("table tr td").mousedown(function(){ 
+          isMouseClicked = true;
+        }).mouseup(function () {
+          isMouseClicked = false;
+          }).mousemove(function(){
+            if (isMouseClicked){
+              $(this).css("background-color", color);
+            }
+          }
+          )}
+      </script>
+
+    <body>
+    <div class="wrapper">
+        <div class="header">
+              <nav class="navbar navbar-light bg-primary">
+               <h1 class="h1">Floor Deisgner</h1>
+              </nav>
+          </div>
+
+  <div class="sidebar">
+    <div class="card">
+      <div class="card-header">
+        Generate layout:
+      </div>
+      <div class="card-body">
+       
+      <form>
+        <br><label>Height:</label>
+        <br><input class="form-control" type="number" name="Rows" id="Rows"> 
+        <br><label>Width:</label>
+        <br><input class="form-control" type="number" name="Columns" id="Columns">
+      </form>
+      <br><button  class="btn btn-primary" onclick="generateGrid(document.getElementById('Rows').value, document.getElementById('Columns').value)"> Click for Grid </button>
+
+      </div>
+    </div>
+    <br>
+    <div class="card">
+      <div class="card-header">
+        Items:
+      </div>
+      <div class="card-body">
+
+        <div class="btn-group-vertical" style="padding-left:20px;">
+          <input class="btn btn-primary"  id='btnWorker' type='button' value='Worker'>
+          <input class="btn btn-primary" id='btnDesk' type='button' value='Desk'>
+          <input class="btn btn-primary" id='btnMachine' type='button' value='Machine'>
+          <input class="btn btn-primary" id='btnEntry' type='button' value='Entry'>
+          <input class="btn btn-primary" id='btnGrass' type='button' value='Grass'>
+          <input class="btn btn-primary" id='btnWall' type='button' value='Wall'>
+          <input class="btn btn-primary" id='btnDelete' type='button' value='Delete'>
+        </div>
+
+  </div>
+</div>
+</div>
+     
+  <div class="content">
+   
+    <div class="card">
+      <div class="card-header">
+        Layout:
+      </div>
+      <div class="card-body">
+        <div id="tableContainer"></div>
+      </div>
+    </div>
+   
+  </div>
+    </body>
+
+    
+    </html>
