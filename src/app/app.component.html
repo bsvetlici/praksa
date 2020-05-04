@@ -1,0 +1,55 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+
+ 
+ <div class="wrapper">
+
+  <mat-toolbar class="header" color="primary">
+    <mat-toolbar-row>
+      <h1>FLOOR EDITOR</h1>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+ 
+
+<mat-card style="margin-left:30px" class="mat-card"> 
+  <br>
+    <label>Click for item:</label>
+    <mat-divider></mat-divider>
+    <br>
+    <br><input class="workerButton" id='btnWorker' type='button' value='Worker'>
+    <br>
+    <br><input class="deskButton" id='btnDesk' type='button' value='Desk'>
+    <br>
+    <br><input class="machineButton" id='btnMachine' type='button' value='Machine'>
+    <br>
+    <br><input class="entryButton" id='btnEntry' type='button' value='Entry'>
+    <br>
+    <br> <input class="grassButton" id='btnGrass' type='button' value='Grass'>
+    <br>
+    <br> <input class="wallButton" id='btnWall' type='button' value='Wall'>
+    <br>
+    <br> <input class="deleteButton" id='btnDelete' type='button' value='Delete'>
+    <br>
+   
+  </mat-card>
+
+
+  <mat-card class="content">
+  
+    <form>
+    <label style="margin-left: 50px">Rows</label>
+    <input style="margin-left: 50px" type="number" name="Row" id="Rows"> 
+    <label style="margin-left: 50px">Column  </label>
+    <input style="margin-left: 50px" type="number" name="Columns" id="Columns">   
+    <button  id='buttonGenGrid' style="margin-left: 50px" class="buttonGenGrid" onClick="generateGrid(document.getElementById('Rows').value, document.getElementById('Columns').value)"> Click for Grid </button>
+  </form>
+  <mat-divider></mat-divider>
+  <div id="tableContainer"></div>
+  </mat-card>
+ 
